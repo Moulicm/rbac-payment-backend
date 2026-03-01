@@ -1,12 +1,11 @@
 # RBAC & Payment Workflow Backend
 
-## 📖 Project Overview
+##  Project Overview
 
 This project is a robust Node.js backend designed to demonstrate **Role-Based Access Control (RBAC)** and a structured **Payment Workflow**. It provides a secure environment where users are authenticated via JWT, and access to specific resources (like administrative payment overviews) is strictly enforced based on user roles (`USER` vs `ADMIN`).
 
----
 
-## 🛠 Tech Stack
+## Tech Stack
 
 * **Runtime:** Node.js (v20+)
 * **Framework:** Express.js
@@ -15,9 +14,8 @@ This project is a robust Node.js backend designed to demonstrate **Role-Based Ac
 * **Security:** JSON Web Tokens (JWT), Bcrypt (Password Hashing)
 * **Environment Management:** Dotenv
 
----
 
-## 🚀 Setup Instructions
+##  Setup Instructions
 
 1. **Clone the repository:**
 ```bash
@@ -50,9 +48,8 @@ node src/server.js
 
 
 
----
 
-## ⚙️ Environment Configuration
+##  Environment Configuration
 
 Create a `.env` file in the root directory with the following variables:
 
@@ -64,18 +61,16 @@ JWT_EXPIRES_IN="1d"
 
 ```
 
----
 
-## 🗄 Database Schema
+##  Database Schema
 
 The system uses a relational schema managed via Prisma.
 
 * **User Table:** Stores credentials, profile info, and the `Role` enum.
 * **Payment Table:** Stores transaction details, amounts, and a relation to the `User` who initiated it.
 
----
 
-## 🔐 RBAC Logic & Security
+##  RBAC Logic & Security
 
 Access control is implemented via a modular middleware chain:
 
@@ -87,18 +82,16 @@ Access control is implemented via a modular middleware chain:
 | **USER** | Can register, login, create payments, and view their own history. |
 | **ADMIN** | Full access, including viewing all payments across the system. |
 
----
 
-## 💳 Payment Workflow
+##  Payment Workflow
 
 1. **Initiation**: User sends a `POST /payments` request.
 2. **Validation**: System verifies the user's token and account status.
 3. **Creation**: A payment record is created with a `PENDING` status.
 4. **Processing**: (Simulated) The service interacts with a gateway and updates the status to `COMPLETED` or `FAILED`.
 
----
 
-## 📑 API Documentation
+##  API Documentation
 
 ### 1. Authentication
 
@@ -128,22 +121,19 @@ Access control is implemented via a modular middleware chain:
 
 
 
----
 
-## 🛡 Security Considerations
+##  Security Considerations
 
 * **Password Hashing:** Using `bcrypt` with a salt factor of 10.
 * **JWT Protection:** Tokens are signed and required for all non-public routes.
 * **Role Enforcement:** Prevents IDOR (Insecure Direct Object Reference) by ensuring users only see their own data.
 * **Input Sanitization:** Express middleware ensures incoming JSON is well-formed.
 
----
 
-## 📝 Assumptions
+##  Assumptions
 
 * Tokens are passed in the `Authorization` header as `Bearer <token>`.
 * The default role for any new registered user is `USER`.
 
----
 
 **Would you like me to help you format the "API Documentation" section with more specific JSON examples based on your exact controller code?**
